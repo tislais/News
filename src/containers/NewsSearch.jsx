@@ -17,8 +17,6 @@ export default class NewsSearch extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log('submitted');
-    
     const { searchTerm } = this.state;
     const articles = await searchNews(searchTerm);
     this.setState({ articles: articles.articles, loading: false });
@@ -41,7 +39,8 @@ export default class NewsSearch extends Component {
 
         {loading
           ? <h1>Loading...</h1>
-          : <ArticleList articles={articles} />}
+          : <ul data-testid="list"> <ArticleList articles={articles} /> </ul>
+        }
       </>
     );
   }

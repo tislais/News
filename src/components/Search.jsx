@@ -9,6 +9,7 @@ const Search = ({ searchTerm, onChange, onSubmit }) => {
           className="text-white font-semibold">Search</label>
         <input 
           className="ml-3 rounded-sm p-2" 
+          placeholder="Topic..."
           id="searchTerm" 
           type="text" 
           name="searchTerm"

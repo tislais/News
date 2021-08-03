@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`search component renders an input 1`] = `
+<DocumentFragment>
+  <nav
+    class="p-6 bg-indigo-400"
+  >
+    <form>
+      <label
+        class="text-white font-semibold"
+        for="searchTerm"
+      >
+        Search
+      </label>
+      <input
+        class="ml-3 rounded-sm p-2"
+        id="searchTerm"
+        name="searchTerm"
+        placeholder="Topic..."
+        type="text"
+        value=""
+      />
+    </form>
+  </nav>
+</DocumentFragment>
+`;
