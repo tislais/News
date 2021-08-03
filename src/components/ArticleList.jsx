@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Article from './Article';
 
 const ArticleList = ({ articles }) => {
-  console.log('articles: ', articles);
   const articleMap = articles.map((article) => (
     <li key={article.title}>
       <Article

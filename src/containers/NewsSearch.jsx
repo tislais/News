@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Search from '../components/Search';
 import ArticleList from '../components/ArticleList';
-import { fetchNews } from '../services/NewsAPI';
+import { fetchNews, searchNews } from '../services/NewsAPI';
 
 export default class NewsSearch extends Component {
   state = {
-    searchTerm: 'hi',
+    searchTerm: 'covid',
     loading: true,
     articles: {}
   };
@@ -14,10 +14,19 @@ export default class NewsSearch extends Component {
     this.setState({ [target.name]: target.value });
   }; 
 
+  handleSubmit = async (e) => {
+    e.preventDefault();
+
+    console.log('submitted');
+    
+    const { searchTerm } = this.state;
+    const articles = await searchNews(searchTerm);
+    this.setState({ articles: articles.articles, loading: false });
+  }
+
   async componentDidMount() {
     const articles = await fetchNews();
     this.setState({ articles: articles.articles, loading: false });
-    console.log(this.state.articles);
   }
 
   render() {
@@ -27,7 +36,8 @@ export default class NewsSearch extends Component {
       <>
         <Search 
           searchTerm={searchTerm} 
-          onChange={this.handleChange} />
+          onChange={this.handleChange}
+          onSubmit={this.handleSubmit} />
 
         {loading
           ? <h1>Loading...</h1>
