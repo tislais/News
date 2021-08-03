@@ -14,6 +14,14 @@ const ArticleList = ({ articles }) => {
   return articleMap;
 };
 
-ArticleList.propTypes = {};
+ArticleList.propTypes = {
+  articles: PropTypes.objectOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+    })
+  ).isRequired
+};
 
 export default ArticleList;
